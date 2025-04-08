@@ -1,6 +1,7 @@
 package com.RicardoNeto01.first_spring_app.controller;
 
 import com.RicardoNeto01.first_spring_app.service.HelloWorldService;
+import domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +32,7 @@ public class HelloWorldController {
     //QUando alguém enviar uma requisição do tipo post, esse método responde
     @PostMapping("")
     //Request body porque o método precisa receber um json com valores
-    public String helloWorldPost(@RequestBody String body){
-        return "Hello World Post";
+    public String helloWorldPost(@RequestBody User body){
+        return "Hello World Post" + body.getEmail() + body.getName();
     }
 }
