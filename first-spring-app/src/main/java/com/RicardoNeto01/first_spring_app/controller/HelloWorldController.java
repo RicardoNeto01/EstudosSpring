@@ -2,9 +2,7 @@ package com.RicardoNeto01.first_spring_app.controller;
 
 import com.RicardoNeto01.first_spring_app.service.HelloWorldService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 // Podemos ter API STATEFULL: estado de cada cliente (autenticação, token, etc), é salvo no servidor.
 // E também API STATELESS: a cada requisição, é necessário receber todas as informações para executar a funcionalidade que o cliente quer.
@@ -28,5 +26,12 @@ public class HelloWorldController {
     @GetMapping
     public String helloWorld(){
         return helloWorldService.helloWorld("Ricardo");
+    }
+
+    //QUando alguém enviar uma requisição do tipo post, esse método responde
+    @PostMapping("")
+    //Request body porque o método precisa receber um json com valores
+    public String helloWorldPost(@RequestBody String body){
+        return "Hello World Post";
     }
 }
