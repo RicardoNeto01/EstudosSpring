@@ -1,6 +1,7 @@
 package com.RicardoNeto01.first_spring_app.controller;
 
 import com.RicardoNeto01.first_spring_app.service.HelloWorldService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,13 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/hello-world")
 public class HelloWorldController {
 
-    private HelloWorldService helloWorldService;
     //Fiz isso para a classe controller conseguir acessar a classe service
-    public HelloWorldController(HelloWorldService helloWorldService){
-        this.helloWorldService = helloWorldService;
-    }
 
-
+    //Usando autoWired, a dependencia é injetada pelo Spring
+    @Autowired
+    private HelloWorldService helloWorldService;
 
     //Anotação para especificar qual requisição http esse método responde
     // post, get, put, delete, patch, etc...
