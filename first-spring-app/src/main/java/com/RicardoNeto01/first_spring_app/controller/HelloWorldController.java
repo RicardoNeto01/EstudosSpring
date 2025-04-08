@@ -30,9 +30,11 @@ public class HelloWorldController {
     }
 
     //QUando alguém enviar uma requisição do tipo post, esse método responde
-    @PostMapping("")
+    //Recebendo requisições pela url, usa-se chaves e nome da variável
+    @PostMapping("/{id}")
     //Request body porque o método precisa receber um json com valores
-    public String helloWorldPost(@RequestBody User body){
-        return "Hello World Post" + body.getEmail() + body.getName();
+    //@PathVariable recebe pela url, e injeta no parametro do método
+    public String helloWorldPost(@PathVariable String id, @RequestBody User body){
+        return "Hello World " + body.getName() + id;
     }
 }
